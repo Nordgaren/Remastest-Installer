@@ -20,7 +20,9 @@ Dependencies packaged into EXE by [Costrua.Fody](https://www.nuget.org/packages/
 **[TKGP](https://github.com/JKAnderson)** for making SoulsFormats, UXM, and Yabber.  
 **[thefifthmatt](https://github.com/thefifthmatt)** for suggesting how to make the unapacker faster.  
 
-### Patch Notes  
+### Patch Notes 
+## v 2.4
+* Updated UDSFMCSharp for handling single exe files
 ## v 2.3
 * Updated error handling and updated UDSFMCSharp
 ## v 2.2
