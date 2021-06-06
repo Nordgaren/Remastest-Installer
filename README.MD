@@ -21,6 +21,8 @@ Dependencies packaged into EXE by [Costrua.Fody](https://www.nuget.org/packages/
 **[thefifthmatt](https://github.com/thefifthmatt)** for suggesting how to make the unapacker faster.  
 
 ### Patch Notes  
+## v 2.3
+* Updated error handling and updated UDSFMCS
 ## v 2.2
 * Warns user if their Dark Souls folder is read only, which requires them to run as admin, instead of getting stuck at "Preparing to unpack"
 ## v 2.1
