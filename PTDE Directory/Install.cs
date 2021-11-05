@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PTDE_Installer
@@ -95,8 +96,30 @@ namespace PTDE_Installer
             BackupSettings(progress);
             CopyFiles(sourceDirectoryInfo, targetDirectoryInfo, progress);
             RestoreSettings(progress);
+            CheckForINIUpdates(progress);
         }
 
+        private static void CheckForINIUpdates(IProgress<(double, string)> progress)
+       {
+            var file = PTDEInstall + @"\DATA\d3d9_Mod.ini";
+
+            if (!File.Exists(file))
+                return;
+
+            var lol = Path.GetFileName(file);
+
+            var iniText = File.ReadAllText(file);
+
+            if (!iniText.Contains("CustomSaveLocation="))
+            {
+                progress.Report((1, @"patching:" + Path.GetFileName(file)));
+                var textList = iniText.Split('\n').ToList();
+                var index = textList.FindIndex(x => x.Contains("EnableMultiphantom="));
+                textList.Insert(index + 1, "CustomSaveLocation=%userprofile%\\Documents\\NBGI\\darksouls\\MODSOULS.sl2\r");
+                File.WriteAllText(file, string.Join("\n" ,textList));
+            }
+
+        }
 
         private static string[] Files;
 
